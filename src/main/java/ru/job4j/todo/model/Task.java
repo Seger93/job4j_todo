@@ -28,6 +28,7 @@ public class Task {
     @Getter
     @Setter
     private LocalDateTime created;
+
     @Getter
     @Setter
     private boolean done;

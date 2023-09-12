@@ -1,11 +1,11 @@
-package ru.job4j.todo.repository;
+package ru.job4j.todo.service;
 
 import ru.job4j.todo.model.Task;
 
 import java.util.Collection;
 import java.util.Optional;
 
-public interface TaskRepository {
+public interface TaskService {
 
     Optional<Task> create(Task task);
 
@@ -18,6 +18,8 @@ public interface TaskRepository {
     boolean updateState(Task tasks);
 
     boolean deleteById(int id);
+
     Collection<Task> findAllFalse();
+
     Collection<Task> findAllTrue();
-}
+ }

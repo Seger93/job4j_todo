@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface TaskService {
 
-    Optional<Task> create(Task task);
+    Optional<Task> save(Task task);
 
     Collection<Task> getAll();
 

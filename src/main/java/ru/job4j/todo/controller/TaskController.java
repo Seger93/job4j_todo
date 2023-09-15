@@ -45,9 +45,28 @@ public class TaskController {
         return "tasks/old";
     }
 
-    @PostMapping("/update")
-    public String saveTask(@ModelAttribute Task task) {
-
+    @GetMapping("/delete/{id}")
+    public String delete(Model model, @PathVariable int id) {
+        var isDeleted = taskService.deleteById(id);
+        if (!isDeleted) {
+            model.addAttribute("message", "Задание указанным идентификатором не найдена");
+            return "errors/404";
+        }
         return "redirect:/tasks";
+    }
+    @GetMapping("/create")
+    public String getCreationPage() {
+        return "tasks/create";
+    }
+
+    @PostMapping("/create")
+    public String create(@ModelAttribute Task task, Model model) {
+        try {
+            taskService.save(task);
+            return "redirect:/tasks";
+        } catch (Exception exception) {
+            model.addAttribute("message", exception.getMessage());
+            return "errors/404";
+        }
     }
 }

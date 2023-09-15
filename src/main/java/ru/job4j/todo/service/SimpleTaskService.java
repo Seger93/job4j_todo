@@ -15,7 +15,7 @@ public class SimpleTaskService implements TaskService {
     private final TaskRepository taskRepository;
 
     @Override
-    public Optional<Task> create(Task task) {
+    public Optional<Task> save(Task task) {
         return taskRepository.create(task);
     }
 

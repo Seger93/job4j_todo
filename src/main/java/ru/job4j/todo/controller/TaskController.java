@@ -54,19 +54,15 @@ public class TaskController {
         }
         return "redirect:/tasks";
     }
+
     @GetMapping("/create")
     public String getCreationPage() {
         return "tasks/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Task task, Model model) {
-        try {
-            taskService.save(task);
-            return "redirect:/tasks";
-        } catch (Exception exception) {
-            model.addAttribute("message", exception.getMessage());
-            return "errors/404";
-        }
+    public String create(@ModelAttribute Task task) {
+        taskService.save(task);
+        return "redirect:/tasks";
     }
 }

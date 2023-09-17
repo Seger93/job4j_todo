@@ -65,4 +65,31 @@ public class TaskController {
         taskService.save(task);
         return "redirect:/tasks";
     }
+
+    @GetMapping("/update/{id}")
+    public String getUpdate(Model model, @PathVariable int id) {
+        Optional<Task> taskOptional = taskService.getById(id);
+        if (taskOptional.isEmpty()) {
+            model.addAttribute("error", "Задача не найдена");
+            return "errors/404";
+        }
+        model.addAttribute("task", taskOptional.get());
+        return "tasks/update";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Task task) {
+        taskService.update(task);
+        return "redirect:/tasks";
+    }
+
+    @GetMapping("/updateDone{id}")
+    public String updateDone(Model model, @ModelAttribute Task task) {
+        var isUpdated = taskService.updateState(task);
+        if (!isUpdated) {
+            model.addAttribute("message", "Задание не найдено");
+            return "errors/404";
+        }
+        return "redirect:/tasks";
+    }
 }

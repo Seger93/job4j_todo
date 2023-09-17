@@ -18,6 +18,8 @@ public interface TaskRepository {
     boolean updateState(Task tasks);
 
     boolean deleteById(int id);
+
     Collection<Task> findAllFalse();
+
     Collection<Task> findAllTrue();
 }

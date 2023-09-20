@@ -49,7 +49,7 @@
                         <td><a th:href="@{/tasks/{id}(id=${task.id})}" th:text="${task.id}"></a></td>
                         <td th:text="${task.title}"></td>
                         <td th:text="${task.created}"></td>
-                        <td th:text="${task.done}"></td>
+                        <td th:text="${task.done == true ? 'выполнено' : 'не выполнено'}"></td>
                     </tbody>
                 </table>
             <div>

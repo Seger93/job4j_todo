@@ -5,10 +5,11 @@
 
 ### Функционал, который будет реализован:
 
-:black_square_button: Страница со списком всех зданий. 
+:zap: Страница со списком всех зданий.
 
--[] Проект будет дополнительно обновляться позже. 
+:zap: Возможность удаления, обновления задания.
 
+:zap: Добавление задания.
 
 ### Технологии
 
@@ -20,5 +21,14 @@ __Hibernate__
 ![](https://img.shields.io/badge/Hibernate-green) ![](https://img.shields.io/badge/Thymeleaf-green)
 ![](https://img.shields.io/badge/Bootstrap-violet) ![](https://img.shields.io/badge/Liquibase-red)
 ![](https://img.shields.io/badge/Sql2o-blue) ![](https://img.shields.io/badge/PostgreSQL-blue)
+
+### Список всех заданий.
+![](screenshots/image1.jpg)
+
+### Создание задания.
+![](screenshots/image2.png)
+
+### Страница редактирования и управления состоянием задания.
+![](screenshots/image3.png)
 
 [Связаться со мной](https://t.me/BeerMaster93)

@@ -83,7 +83,7 @@ public class TaskController {
         return "redirect:/tasks";
     }
 
-    @GetMapping("/updateDone{id}")
+    @GetMapping("/updateDone/{id}")
     public String updateDone(Model model, @ModelAttribute Task task) {
         var isUpdated = taskService.updateState(task);
         if (!isUpdated) {

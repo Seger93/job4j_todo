@@ -1,9 +1,11 @@
 package ru.job4j.todo.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 public class Task {
 
     @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,9 +28,10 @@ public class Task {
     @Setter
     private String title;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Getter
     @Setter
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
 
     @Getter
     @Setter

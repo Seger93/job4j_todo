@@ -110,7 +110,7 @@ public class HQLTaskRepository implements TaskRepository {
             session.beginTransaction();
             session.createQuery(
                             "UPDATE Task SET done = :done WHERE id = :fId")
-                    .setParameter("done", tasks.isDone())
+                    .setParameter("done", !tasks.isDone())
                     .setParameter("fId", tasks.getId())
                     .executeUpdate();
             session.getTransaction().commit();

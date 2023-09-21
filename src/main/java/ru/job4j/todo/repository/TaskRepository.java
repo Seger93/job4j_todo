@@ -19,7 +19,5 @@ public interface TaskRepository {
 
     boolean deleteById(int id);
 
-    Collection<Task> findAllFalse();
-
-    Collection<Task> findAllTrue();
+    Collection<Task> findState(boolean flag);
 }

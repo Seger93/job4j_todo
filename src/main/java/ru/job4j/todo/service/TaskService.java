@@ -19,7 +19,6 @@ public interface TaskService {
 
     boolean deleteById(int id);
 
-    Collection<Task> findAllFalse();
+    Collection<Task> findState(boolean flag);
 
-    Collection<Task> findAllTrue();
  }

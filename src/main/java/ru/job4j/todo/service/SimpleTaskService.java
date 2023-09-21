@@ -45,12 +45,7 @@ public class SimpleTaskService implements TaskService {
     }
 
     @Override
-    public Collection<Task> findAllTrue() {
-        return taskRepository.findAllTrue();
-    }
-
-    @Override
-    public Collection<Task> findAllFalse() {
-        return taskRepository.findAllFalse();
+    public Collection<Task> findState(boolean flag) {
+        return taskRepository.findState(flag);
     }
 }

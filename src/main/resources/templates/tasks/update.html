@@ -39,6 +39,11 @@
                 <input type="text" class="form-control" id="description" name="description"  th:field="${task.description}"
                        placeholder="Описание задачи">
             </div>
+            <div class="mb-3">
+                <label for="title" class="form-label"><b>Примечание</b></label>
+                <input type="text" class="form-control" id="title" name="title"  th:field="${task.title}"
+                       placeholder="Краткое примечание">
+            </div>
             <div class="row">
                 <div class="col-6"><a class="btn btn-danger w-100" th:href="@{/tasks}">Отмена</a></div>
                 <div class="col-6">

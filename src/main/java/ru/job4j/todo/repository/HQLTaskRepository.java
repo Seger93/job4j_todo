@@ -84,11 +84,7 @@ public class HQLTaskRepository implements TaskRepository {
         Session session = this.sf.openSession();
         try {
             session.beginTransaction();
-            session.createQuery(
-                            "UPDATE Task SET description = :description WHERE id = :fId")
-                    .setParameter("description", tasks.getDescription())
-                    .setParameter("fId", tasks.getId())
-                    .executeUpdate();
+            session.update(tasks);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -151,36 +147,13 @@ public class HQLTaskRepository implements TaskRepository {
     }
 
     @Override
-    public Collection<Task> findAllFalse() {
+    public Collection<Task> findState(boolean flag) {
         Session session = this.sf.openSession();
         Collection<Task> result;
         try {
             session.beginTransaction();
             result = session.createQuery("from Task t where done = :fDone order by t.id", Task.class)
-                    .setParameter("fDone", false)
-                    .list();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            if (session != null && session.getTransaction().isActive()) {
-                session.getTransaction().rollback();
-            }
-            throw e;
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public Collection<Task> findAllTrue() {
-        Session session = this.sf.openSession();
-        Collection<Task> result;
-        try {
-            session.beginTransaction();
-            result = session.createQuery("from Task t where done = :fDone order by t.id", Task.class)
-                    .setParameter("fDone", true)
+                    .setParameter("fDone", flag)
                     .list();
             session.getTransaction().commit();
         } catch (Exception e) {

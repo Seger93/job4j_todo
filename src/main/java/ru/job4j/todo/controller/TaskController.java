@@ -35,13 +35,13 @@ public class TaskController {
 
     @GetMapping("/new")
     public String findByNew(Model model) {
-        model.addAttribute("tasks", taskService.findAllFalse());
+        model.addAttribute("tasks", taskService.findState(false));
         return "tasks/new";
     }
 
     @GetMapping("/old")
     public String newTask(Model model) {
-        model.addAttribute("tasks", taskService.findAllTrue());
+        model.addAttribute("tasks", taskService.findState(true));
         return "tasks/old";
     }
 

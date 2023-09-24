@@ -17,12 +17,12 @@ public class HQLUserRepository implements UserRepository {
     @Override
     public Optional<User> save(User user) {
         Session session = this.sf.openSession();
-        Optional<User> res;
+        Optional<User> res = Optional.empty();
         try {
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
-            res = Optional.ofNullable(user);
+            res = Optional.of(user);
         } catch (Exception e) {
             if (session != null && session.getTransaction().isActive()) {
                 session.getTransaction().rollback();

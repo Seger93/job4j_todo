@@ -3,11 +3,8 @@ package ru.job4j.todo.repository;
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.job4j.todo.model.User;
-
 
 import java.util.Optional;
 
@@ -15,17 +12,17 @@ import java.util.Optional;
 @AllArgsConstructor
 public class HQLUserRepository implements UserRepository {
 
-    private static final Logger LOG = LoggerFactory.getLogger(HQLUserRepository.class.getName());
-
     private final SessionFactory sf;
 
     @Override
     public Optional<User> save(User user) {
         Session session = this.sf.openSession();
+        Optional<User> res;
         try {
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
+            res = Optional.ofNullable(user);
         } catch (Exception e) {
             if (session != null && session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
@@ -36,7 +33,7 @@ public class HQLUserRepository implements UserRepository {
                 session.close();
             }
         }
-        return Optional.ofNullable(user);
+        return res;
     }
 
     @Override

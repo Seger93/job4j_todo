@@ -50,6 +50,7 @@
                         <th class="col-1">Примечание</th>
                         <th class="col-1">Время создания</th>
                         <th class="col-1">Статус</th>
+                        <th class="col-1">Пользователь</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,7 @@
                         <td th:text="${task.title}"></td>
                         <td th:text="${task.created}"></td>
                         <td th:text="${task.done == true ? 'выполнено' : 'не выполнено'}"></td>
+                        <td th:text="${task.usersId != null ? task.usersId.name : ''}"></td>
                     </tbody>
                 </table>
             <div>

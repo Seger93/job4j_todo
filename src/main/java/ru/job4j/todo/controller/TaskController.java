@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.todo.model.Task;
+import ru.job4j.todo.model.User;
 import ru.job4j.todo.service.TaskService;
 
 import java.util.Optional;
@@ -23,7 +24,8 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public String findById(Model model, @PathVariable int id) {
+    public String findById(Model model, @PathVariable int id, @SessionAttribute User user) {
+        user.setId(id);
         Optional<Task> taskOptional = taskService.getById(id);
         if (taskOptional.isEmpty()) {
             model.addAttribute("message", "Задача не найдена");
@@ -61,7 +63,8 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Task task) {
+    public String create(@ModelAttribute Task task, @SessionAttribute User user) {
+        task.setUsersId(user);
         taskService.save(task);
         return "redirect:/tasks";
     }

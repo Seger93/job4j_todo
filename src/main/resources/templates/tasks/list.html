@@ -59,7 +59,7 @@
                         <td th:text="${task.title}"></td>
                         <td th:text="${task.created}"></td>
                         <td th:text="${task.done == true ? 'выполнено' : 'не выполнено'}"></td>
-                        <td th:text="${task.usersId != null ? task.usersId.name : ''}"></td>
+                        <td th:text="${task.user != null ? task.user.name : ''}"></td>
                     </tbody>
                 </table>
             <div>

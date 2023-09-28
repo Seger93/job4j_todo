@@ -24,8 +24,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public String findById(Model model, @PathVariable int id, @SessionAttribute User user) {
-        user.setId(id);
+    public String findById(Model model, @PathVariable int id) {
         Optional<Task> taskOptional = taskService.getById(id);
         if (taskOptional.isEmpty()) {
             model.addAttribute("message", "Задача не найдена");
@@ -64,7 +63,7 @@ public class TaskController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute Task task, @SessionAttribute User user) {
-        task.setUsersId(user);
+        task.setUser(user);
         taskService.save(task);
         return "redirect:/tasks";
     }

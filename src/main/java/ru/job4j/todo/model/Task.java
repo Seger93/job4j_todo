@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import ru.job4j.todo.model.User;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,5 +31,5 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private User usersId;
+    private User user;
 }

@@ -48,6 +48,12 @@
                 <input type="text" class="form-control" id="title" name="title"  th:field="${task.title}"
                        placeholder="Краткое примечание">
             </div>
+            <div class="mb-3">
+                <label for="priority">Приоритет</label>
+                <select class="from-check-label" id="priority" name="priority.id">
+                    <option th:each="priority : ${priorities}" th:value="${priority.id}" th:text="${priority.name}"></option>
+                </select>
+            </div>
             <div class="row">
                 <div class="col-6"><a class="btn btn-danger w-100" th:href="@{/tasks}">Отмена</a></div>
                 <div class="col-6">

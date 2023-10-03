@@ -51,6 +51,7 @@
                         <th class="col-1">Время создания</th>
                         <th class="col-1">Статус</th>
                         <th class="col-1">Пользователь</th>
+                        <th class="col-1">Приоритет</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -60,6 +61,7 @@
                         <td th:text="${task.created}"></td>
                         <td th:text="${task.done == true ? 'выполнено' : 'не выполнено'}"></td>
                         <td th:text="${task.user != null ? task.user.name : ''}"></td>
+                        <td th:text="${task.priority.name}"></td>
                     </tbody>
                 </table>
             <div>

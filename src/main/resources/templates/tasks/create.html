@@ -49,6 +49,12 @@
                 <label for="created" class="form-label"><b>Время</b></label>
                 <input type="datetime-local" class="form-control" id="created" name="created" placeholder="Время создания">
             </div>
+            <div class="mb-3">
+                <label for="priority">Приоритет</label>
+                <select class="from-check-label" id="priority" name="priority.id">
+                    <option th:each="priority : ${priorities}" th:value="${priority.id}" th:text="${priority.name}"></option>
+                </select>
+            </div>
             <div class="form-check mb-3">
                 <input type="checkbox" name="done" class="form-check-input" id="done">
                 <label class="form-check-label" for="done">Указать задание как выполненное</label>

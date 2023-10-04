@@ -54,6 +54,13 @@
                     <option th:each="priority : ${priorities}" th:value="${priority.id}" th:text="${priority.name}"></option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="priority">Категория</label>
+                <select class="from-check-label" id="category" name="categoryIds" multiple>
+                    <option th:each="category : ${categories}" th:value="${category.id}"
+                            th:text="${category.name}"></option>
+                </select>
+            </div>
             <div class="row">
                 <div class="col-6"><a class="btn btn-danger w-100" th:href="@{/tasks}">Отмена</a></div>
                 <div class="col-6">

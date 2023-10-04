@@ -47,12 +47,21 @@
             </div>
             <div class="mb-3">
                 <label for="created" class="form-label"><b>Время</b></label>
-                <input type="datetime-local" class="form-control" id="created" name="created" placeholder="Время создания">
+                <input type="datetime-local" class="form-control" id="created" name="created"
+                       placeholder="Время создания">
             </div>
             <div class="mb-3">
                 <label for="priority">Приоритет</label>
                 <select class="from-check-label" id="priority" name="priority.id">
-                    <option th:each="priority : ${priorities}" th:value="${priority.id}" th:text="${priority.name}"></option>
+                    <option th:each="priority : ${priorities}" th:value="${priority.id}"
+                            th:text="${priority.name}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="priority">Выберите категорию</label>
+                <select class="from-check-label" id="category" name="categoryIds" multiple>
+                    <option th:each="category : ${categories}" th:value="${category.id}"
+                            th:text="${category.name}"></option>
                 </select>
             </div>
             <div class="form-check mb-3">

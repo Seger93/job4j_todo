@@ -52,6 +52,7 @@
                         <th class="col-1">Статус</th>
                         <th class="col-1">Пользователь</th>
                         <th class="col-1">Приоритет</th>
+                        <th class="col-1">Категория</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,6 +63,10 @@
                         <td th:text="${task.done == true ? 'выполнено' : 'не выполнено'}"></td>
                         <td th:text="${task.user != null ? task.user.name : ''}"></td>
                         <td th:text="${task.priority.name}"></td>
+                        <td>
+                            <span th:each="category: ${task.categories}" th:text="${category.name}" th:if="${not #lists.isEmpty(task.categories)}"></span>
+                            <span th:if="${#lists.isEmpty(task.categories)}">-</span>
+                        </td>
                     </tbody>
                 </table>
             <div>

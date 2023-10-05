@@ -7,7 +7,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,5 +47,5 @@ public class Task {
             joinColumns = {@JoinColumn(name = "tasks_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
-    private List<Category> categories = new ArrayList<>();
+    private Set<Category> categories = new HashSet<>();
 }

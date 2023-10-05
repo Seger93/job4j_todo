@@ -27,7 +27,7 @@ public class HQLTaskRepository implements TaskRepository {
 
     @Override
     public Collection<Task> getAll() {
-        return crudRepository.query("SELECT DISTINCT t FROM Task t JOIN FETCH t.priority JOIN FETCH t.categories",
+        return crudRepository.query("FROM Task t JOIN FETCH t.priority JOIN FETCH t.categories ORDER BY t.id",
                 Task.class);
     }
 

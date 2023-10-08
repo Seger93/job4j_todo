@@ -64,16 +64,21 @@
                         <td th:text="${task.user != null ? task.user.name : ''}"></td>
                         <td th:text="${task.priority.name}"></td>
                         <td>
-                        <span th:each="category: ${task.categories}" th:text="${category.name}" th:if="${not #lists.isEmpty(task.categories)}"></span>
-                        <span th:if="${#lists.isEmpty(task.categories)}">-</span>
+                        <span th:if="${not #lists.isEmpty(task.categories)}">
+                       <span th:each="category, iterStat : ${task.categories}">
+                         <span th:text="${category.name}"></span>
+                           <span th:if="${not iterStat.last}">, </span>
+                            </span>
+                            </span>
+                            <span th:if="${#lists.isEmpty(task.categories)}">-</span>
                         </td>
                     </tbody>
                 </table>
-            <div>
-                <a th:href="@{tasks/create}" class="btn btn-primary w-50">Добавить задание</a>
+                <div>
+                    <a th:href="@{tasks/create}" class="btn btn-primary w-50">Добавить задание</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

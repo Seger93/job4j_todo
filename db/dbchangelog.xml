@@ -18,4 +18,5 @@
     <include file="scripts/008_ddl_create_table_category.sql" relativeToChangelogFile="true"/>
     <include file="scripts/009_ddl_create_table_task_category.sql" relativeToChangelogFile="true"/>
     <include file="scripts/010_dml_insert_category.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/011_dml_alter_column_user_zone.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

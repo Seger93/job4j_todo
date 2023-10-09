@@ -10,8 +10,11 @@ import ru.job4j.todo.service.CategoryService;
 import ru.job4j.todo.service.PriorityService;
 import ru.job4j.todo.service.TaskService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
+
+import static ru.job4j.todo.utility.TimeZoneGrabber.getTimeZone;
 
 @Controller
 @AllArgsConstructor
@@ -23,8 +26,9 @@ public class TaskController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public String getAll(Model model) {
-        model.addAttribute("tasks", taskService.getAll());
+    public String getAll(Model model, HttpSession session) {
+        var user = (User) session.getAttribute("user");
+        model.addAttribute("tasks", getTimeZone(user, taskService.getAll()));
         return "tasks/list";
     }
 
@@ -41,14 +45,16 @@ public class TaskController {
     }
 
     @GetMapping("/new")
-    public String findByNew(Model model) {
-        model.addAttribute("tasks", taskService.findState(false));
+    public String findByNew(Model model, HttpSession session) {
+        var user = (User) session.getAttribute("user");
+        model.addAttribute("tasks", getTimeZone(user, taskService.findState(false)));
         return "tasks/new";
     }
 
     @GetMapping("/old")
-    public String newTask(Model model) {
-        model.addAttribute("tasks", taskService.findState(true));
+    public String newTask(Model model, HttpSession session) {
+        var user = (User) session.getAttribute("user");
+        model.addAttribute("tasks", getTimeZone(user, taskService.findState(true)));
         return "tasks/old";
     }
 

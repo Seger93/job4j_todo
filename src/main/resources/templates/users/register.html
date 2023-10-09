@@ -30,10 +30,19 @@
         <label for="password" class="form-label"><b>Пароль</b></label>
         <input type="password" class="form-control" id="password" name="password" required>
     </div>
+    <div class="mb-3">
+        <label for="timezone"><b></b></label>
+        <select class="form-control" id="timezone" name="timezone">
+            <option th:value="${zoneDefault}">Укажите часовой пояс</option>
+            <option th:each="timezone : ${timeZone}"
+                    th:value="${timezone.getID}" th:text="${timezone.getID}"></option>
+        </select>
+    </div>
     <div class="col-6">
         <div class="row">
             <div class="col-6"><a class="btn btn-danger w-100" th:href="@{/tasks}">Отмена</a></div>
-            <div class="col-6"><button class="btn btn-primary w-100" type="submit">Сохранить</button>
+            <div class="col-6">
+                <button class="btn btn-primary w-100" type="submit">Сохранить</button>
             </div>
         </div>
     </div>

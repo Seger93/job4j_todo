@@ -12,6 +12,7 @@ import ru.job4j.todo.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.TimeZone;
 
 @Controller
 @AllArgsConstructor
@@ -20,7 +21,9 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("register")
-    public String getRegistationPage() {
+    public String getRegistationPage(Model model) {
+        model.addAttribute("timeZone", userService.getAllTimeZones());
+        model.addAttribute("zoneDefault", TimeZone.getDefault().getID());
         return "users/register";
     }
 

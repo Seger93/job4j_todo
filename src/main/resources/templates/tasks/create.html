@@ -28,6 +28,7 @@
                 </div>
                 <div class="d-flex" th:if="${user.name != 'Гость'}">
                     <a class="nav-link text-secondary me-3" href="#" th:text="${user.name}"></a>
+                    <a class="nav-link text-secondary me-3" href="#" th:text="${user.timezone}"></a>
                     <a class="nav-link text-secondary" th:href="@{/users/logout}">Выйти</a>
                 </div>
             </div>
@@ -44,11 +45,6 @@
             <div class="mb-3">
                 <label for="title" class="form-label"><b>Примечание</b></label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Краткое примечание">
-            </div>
-            <div class="mb-3">
-                <label for="created" class="form-label"><b>Время</b></label>
-                <input type="datetime-local" class="form-control" id="created" name="created"
-                       placeholder="Время создания">
             </div>
             <div class="mb-3">
                 <label for="priority">Приоритет</label>

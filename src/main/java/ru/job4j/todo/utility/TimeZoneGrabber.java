@@ -1,14 +1,16 @@
 package ru.job4j.todo.utility;
 
+import lombok.experimental.UtilityClass;
 import ru.job4j.todo.model.Task;
 import ru.job4j.todo.model.User;
 
 import java.time.ZoneId;
 import java.util.Collection;
 
-public class TimeZoneGrabber {
+@UtilityClass
+ public class TimeZoneGrabber {
 
-    public static Collection<Task> getTimeZone(User user, Collection<Task> tasks) {
+     public static Collection<Task> getTimeZone(User user, Collection<Task> tasks) {
         for (Task task : tasks) {
                 task.setCreated(task.getCreated()
                         .atZone(ZoneId.of("UTC"))
